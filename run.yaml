@@ -1,0 +1,6 @@
+- name: 连通性测试
+  hosts: 
+    - target
+  gather_facts: true
+  roles:
+    - playtest

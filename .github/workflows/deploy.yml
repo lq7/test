@@ -1,0 +1,29 @@
+name: Deploy with Ansible
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - './**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'playbooks/**'
+  workflow_dispatch:  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Ansible Playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: ./run.yml         
+          directory: .                            
+          key: ${{ secrets.SSH_PRIVATE_KEY }}     
+          inventory: ${{ secrets.ANSIBLE_INVENTORY }}   
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'false'     
