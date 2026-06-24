@@ -5,4 +5,4 @@
   roles:
     - playtest
   vars:
-    domain: ${{ secrets.DOMAIN }}   
+    domain: "{{ domain }}"

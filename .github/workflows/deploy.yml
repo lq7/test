@@ -25,5 +25,7 @@ jobs:
           directory: .                            
           key: ${{ secrets.SSH_PRIVATE_KEY }}     
           inventory: ${{ secrets.ANSIBLE_INVENTORY }}   
+          options: >-
+            --extra-vars "domain=${{ secrets.DOMAIN }}"
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'false'     
