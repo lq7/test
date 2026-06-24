@@ -6,4 +6,4 @@
 - name: 渲染模板
   ansible.builtin.template:
     src: vhost.conf
-    dest: "/tmp/vhost-{{ domain }}.conf"
+    dest: "/tmp/vhost-{{ domain.split('.')[0] }}.conf"
