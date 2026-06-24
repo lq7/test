@@ -3,3 +3,7 @@
 # tasks file for roles/playtest
 - name: PING
   ansible.builtin.ping: {}
+- name: 渲染模板
+  ansible.builtin.template:
+    src: vhost.conf
+    dest: "/tmp/vhost-{{ domain }}.conf"
